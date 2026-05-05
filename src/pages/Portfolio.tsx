@@ -237,30 +237,30 @@ export default function Portfolio() {
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="divide-y divide-border border-y border-border">
             {employment.map((job, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-card border border-border rounded-3xl p-8 md:p-10 hover:shadow-lg transition"
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="group grid md:grid-cols-[200px_1fr] gap-6 md:gap-12 py-10 md:py-12"
               >
-                <div className="flex flex-col gap-5">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <h3 className="font-display text-2xl font-bold">
-                      {job.role} <span className="text-primary">· {job.company}</span>
-                    </h3>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide">
-                      {job.period}
-                    </span>
-                  </div>
-                  <div className="h-px w-full bg-border" />
-                  <ul className="space-y-3">
+                <div className="flex flex-col gap-2">
+                  <span className="text-xs uppercase tracking-widest text-primary font-semibold">
+                    {job.period}
+                  </span>
+                  <span className="text-sm text-muted-foreground">{job.company}</span>
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight group-hover:text-primary transition-colors">
+                    {job.role}
+                  </h3>
+                  <ul className="mt-5 space-y-2.5">
                     {job.bullets.map((b, j) => (
                       <li key={j} className="flex gap-3 text-muted-foreground leading-relaxed">
-                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                        <span className="mt-2 w-1 h-1 rounded-full bg-primary flex-shrink-0" />
                         <span>{b}</span>
                       </li>
                     ))}
