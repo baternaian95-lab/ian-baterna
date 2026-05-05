@@ -76,19 +76,24 @@ const employment = [
 ];
 
 export default function Portfolio() {
+  const scrollTo = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
       <header className="sticky top-0 z-30 backdrop-blur-md bg-background/70 border-b border-border">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#top" className="font-display font-bold text-lg tracking-tight">
+          <a href="#top" onClick={scrollTo("top")} className="font-display font-bold text-lg tracking-tight cursor-pointer">
             Ian<span className="text-primary">.</span>
           </a>
           <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#experience" className="hover:text-foreground transition">Experience</a>
-            <a href="#work" className="hover:text-foreground transition">Work</a>
-            <a href="#skills" className="hover:text-foreground transition">Skills</a>
-            <a href="#contact" className="hover:text-foreground transition">Contact</a>
+            <a href="#experience" onClick={scrollTo("experience")} className="hover:text-foreground transition cursor-pointer">Experience</a>
+            <a href="#work" onClick={scrollTo("work")} className="hover:text-foreground transition cursor-pointer">Work</a>
+            <a href="#skills" onClick={scrollTo("skills")} className="hover:text-foreground transition cursor-pointer">Skills</a>
+            <a href="#contact" onClick={scrollTo("contact")} className="hover:text-foreground transition cursor-pointer">Contact</a>
           </nav>
           <Button asChild className="rounded-full">
             <a href="mailto:baternaian95@gmail.com">
@@ -125,8 +130,8 @@ export default function Portfolio() {
                 WordPress, SEO, and system integration — crafting user-centered experiences that drive real results.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild size="lg" className="rounded-full">
-                  <a href="#work">View my work</a>
+                <Button size="lg" className="rounded-full" onClick={scrollTo("work")}>
+                  View my work
                 </Button>
                 <Button asChild variant="outline" size="lg" className="rounded-full">
                   <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
