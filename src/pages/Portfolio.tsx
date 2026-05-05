@@ -90,12 +90,8 @@ export default function Portfolio() {
           <a href="#top" onClick={scrollTo("top")} className="font-display font-bold text-lg tracking-tight cursor-pointer">
             Ian<span className="text-primary">.</span>
           </a>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#experience" onClick={scrollTo("experience")} className="hover:text-foreground transition cursor-pointer">Experience</a>
-            <a href="#work" onClick={scrollTo("work")} className="hover:text-foreground transition cursor-pointer">Work</a>
-            <a href="#skills" onClick={scrollTo("skills")} className="hover:text-foreground transition cursor-pointer">Skills</a>
-            <a href="#contact" onClick={scrollTo("contact")} className="hover:text-foreground transition cursor-pointer">Contact</a>
-          </nav>
+          <NavMenu scrollTo={scrollTo} />
+
           <Button asChild className="rounded-full">
             <a href="mailto:baternaian95@gmail.com">
               Get in touch <ArrowUpRight className="w-4 h-4 ml-1" />
