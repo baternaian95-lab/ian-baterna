@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
@@ -26,31 +26,47 @@ const queryClient = new QueryClient();
 
 function ScrollToTop() {
   const { pathname } = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
   return null;
 }
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} storageKey="app-theme">
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="light"
+      enableSystem={false}
+      storageKey="app-theme"
+    >
       <AuthProvider>
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-              {/* Public */}
-              <Route path="/" element={<Landing />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/register/:slug" element={<Register />} />
-              <Route path="/company/:companySlug" element={<CompanyPage />} />
 
-              {/* Dashboard (protected) */}
-              <Route path="/dashboard" element={<Navigate to="/dashboard/events" replace />} />
-              <Route path="/dashboard/*" element={
+          {/* ✅ NO BrowserRouter here */}
+          <ScrollToTop />
+
+          <Routes>
+            {/* Public */}
+            <Route path="/" element={<Landing />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/register/:slug" element={<Register />} />
+            <Route path="/company/:companySlug" element={<CompanyPage />} />
+
+            {/* Dashboard redirect */}
+            <Route
+              path="/dashboard"
+              element={<Navigate to="/dashboard/events" replace />}
+            />
+
+            {/* Dashboard (protected) */}
+            <Route
+              path="/dashboard/*"
+              element={
                 <ProtectedRoute>
                   <DashboardLayout>
                     <Routes>
@@ -65,11 +81,12 @@ const App = () => (
                     </Routes>
                   </DashboardLayout>
                 </ProtectedRoute>
-              } />
+              }
+            />
 
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </TooltipProvider>
       </AuthProvider>
     </ThemeProvider>
