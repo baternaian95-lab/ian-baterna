@@ -175,7 +175,7 @@ export default function Portfolio() {
               </div>
               <h1 className="font-display text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
                 Hi, I'm Ian.<br />
-                I build <span className="text-primary">websites</span> that work.
+                I build <span className="text-primary">websites</span>.
               </h1>
               <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
                 Website Developer with 5+ years of experience across full-stack development,
