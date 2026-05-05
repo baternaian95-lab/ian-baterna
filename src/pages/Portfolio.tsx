@@ -76,6 +76,11 @@ const employment = [
 ];
 
 export default function Portfolio() {
+  const scrollTo = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
