@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, ArrowUpRight, Briefcase, Sparkles, ExternalLink, FileText } from "lucide-react";
 import ianPhoto from "@/assets/ian-baterna.png";
@@ -75,6 +76,61 @@ const employment = [
   },
 ];
 
+const NAV_ITEMS = [
+  { id: "experience", label: "Experience" },
+  { id: "work", label: "Work" },
+  { id: "skills", label: "Skills" },
+  { id: "contact", label: "Contact" },
+];
+
+function NavMenu({ scrollTo }: { scrollTo: (id: string) => (e: React.MouseEvent) => void }) {
+  const navRef = useRef<HTMLElement>(null);
+  const [indicator, setIndicator] = useState<{ left: number; width: number; opacity: number }>({
+    left: 0,
+    width: 0,
+    opacity: 0,
+  });
+
+  const handleEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = e.currentTarget;
+    const navRect = navRef.current?.getBoundingClientRect();
+    const rect = target.getBoundingClientRect();
+    if (!navRect) return;
+    setIndicator({ left: rect.left - navRect.left, width: rect.width, opacity: 1 });
+  };
+
+  const handleLeave = () => setIndicator((p) => ({ ...p, opacity: 0 }));
+
+  return (
+    <nav
+      ref={navRef}
+      onMouseLeave={handleLeave}
+      className="hidden md:flex relative items-center gap-8 text-sm text-muted-foreground"
+    >
+      {NAV_ITEMS.map((item) => (
+        <a
+          key={item.id}
+          href={`#${item.id}`}
+          onClick={scrollTo(item.id)}
+          onMouseEnter={handleEnter}
+          className="relative py-2 hover:text-foreground transition-colors cursor-pointer"
+        >
+          {item.label}
+        </a>
+      ))}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 h-0.5 bg-primary rounded-full transition-all duration-300 ease-out"
+        style={{
+          left: indicator.left,
+          width: indicator.width,
+          opacity: indicator.opacity,
+        }}
+      />
+    </nav>
+  );
+}
+
 export default function Portfolio() {
   const scrollTo = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
@@ -89,12 +145,8 @@ export default function Portfolio() {
           <a href="#top" onClick={scrollTo("top")} className="font-display font-bold text-lg tracking-tight cursor-pointer">
             Ian<span className="text-primary">.</span>
           </a>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#experience" onClick={scrollTo("experience")} className="hover:text-foreground transition cursor-pointer">Experience</a>
-            <a href="#work" onClick={scrollTo("work")} className="hover:text-foreground transition cursor-pointer">Work</a>
-            <a href="#skills" onClick={scrollTo("skills")} className="hover:text-foreground transition cursor-pointer">Skills</a>
-            <a href="#contact" onClick={scrollTo("contact")} className="hover:text-foreground transition cursor-pointer">Contact</a>
-          </nav>
+          <NavMenu scrollTo={scrollTo} />
+
           <Button asChild className="rounded-full">
             <a href="mailto:baternaian95@gmail.com">
               Get in touch <ArrowUpRight className="w-4 h-4 ml-1" />
