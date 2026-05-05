@@ -130,8 +130,8 @@ export default function Portfolio() {
                 WordPress, SEO, and system integration — crafting user-centered experiences that drive real results.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild size="lg" className="rounded-full">
-                  <a href="#work">View my work</a>
+                <Button size="lg" className="rounded-full" onClick={scrollTo("work")}>
+                  View my work
                 </Button>
                 <Button asChild variant="outline" size="lg" className="rounded-full">
                   <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
