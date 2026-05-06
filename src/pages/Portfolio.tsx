@@ -321,8 +321,8 @@ export default function Portfolio() {
                     </span>
                   ))}
                 </div>
-                <div className="mt-6 pt-4 border-t border-border flex items-center gap-2 text-xs text-muted-foreground group-hover:text-primary transition">
-                  <Link2 className="w-3.5 h-3.5 flex-shrink-0" />
+                <div className="mt-6 pt-4 border-t border-border flex items-center gap-2 text-muted-foreground group-hover:text-primary transition" style={{ fontSize: '15px' }}>
+                  <Link2 className="w-4 h-4 flex-shrink-0" />
                   <span className="truncate">{p.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
                 </div>
               </motion.a>
