@@ -111,17 +111,21 @@ function NavMenu({ scrollTo }: { scrollTo: (id: string) => (e: React.MouseEvent)
       onMouseLeave={handleLeave}
       className="hidden md:flex relative items-center gap-8 text-sm text-muted-foreground h-16"
     >
-      {NAV_ITEMS.map((item) => (
-        <a
-          key={item.id}
-          href={`#${item.id}`}
-          onClick={scrollTo(item.id)}
-          onMouseEnter={handleEnter}
-          className="relative flex items-center h-full hover:text-foreground transition-colors cursor-pointer"
-        >
-          {item.label}
-        </a>
-      ))}
+      {NAV_ITEMS.map((item) => {
+        const Icon = item.icon;
+        return (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            onClick={scrollTo(item.id)}
+            onMouseEnter={handleEnter}
+            className="relative flex items-center gap-2 h-full hover:text-foreground transition-colors cursor-pointer"
+          >
+            <Icon className="w-4 h-4" />
+            {item.label}
+          </a>
+        );
+      })}
       <span
         aria-hidden
         className="pointer-events-none absolute bottom-0 h-0.5 bg-primary rounded-full transition-all duration-300 ease-out"
