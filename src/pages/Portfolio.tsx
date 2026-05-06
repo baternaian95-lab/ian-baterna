@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, ArrowUpRight, Briefcase, Sparkles, ExternalLink, FileText } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight, Briefcase, Sparkles, ExternalLink, FileText, FolderGit2, Wrench, Send } from "lucide-react";
 import ianPhoto from "@/assets/ian-baterna.png";
 
 const RESUME_URL = "https://drive.google.com/file/d/1J0vIVM3MYaZq1ldCUDORgfpVi51m1DPY/view?usp=sharing";
@@ -81,10 +81,10 @@ const employment = [
 ];
 
 const NAV_ITEMS = [
-  { id: "experience", label: "Experience" },
-  { id: "work", label: "Work" },
-  { id: "skills", label: "Skills" },
-  { id: "contact", label: "Contact" },
+  { id: "experience", label: "Experience", icon: Briefcase },
+  { id: "work", label: "Work", icon: FolderGit2 },
+  { id: "skills", label: "Skills", icon: Wrench },
+  { id: "contact", label: "Contact", icon: Send },
 ];
 
 function NavMenu({ scrollTo }: { scrollTo: (id: string) => (e: React.MouseEvent) => void }) {
@@ -111,17 +111,21 @@ function NavMenu({ scrollTo }: { scrollTo: (id: string) => (e: React.MouseEvent)
       onMouseLeave={handleLeave}
       className="hidden md:flex relative items-center gap-8 text-sm text-muted-foreground h-16"
     >
-      {NAV_ITEMS.map((item) => (
-        <a
-          key={item.id}
-          href={`#${item.id}`}
-          onClick={scrollTo(item.id)}
-          onMouseEnter={handleEnter}
-          className="relative flex items-center h-full hover:text-foreground transition-colors cursor-pointer"
-        >
-          {item.label}
-        </a>
-      ))}
+      {NAV_ITEMS.map((item) => {
+        const Icon = item.icon;
+        return (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            onClick={scrollTo(item.id)}
+            onMouseEnter={handleEnter}
+            className="relative flex items-center gap-2 h-full hover:text-foreground transition-colors cursor-pointer"
+          >
+            <Icon className="w-4 h-4" />
+            {item.label}
+          </a>
+        );
+      })}
       <span
         aria-hidden
         className="pointer-events-none absolute bottom-0 h-0.5 bg-primary rounded-full transition-all duration-300 ease-out"
