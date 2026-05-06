@@ -81,10 +81,10 @@ const employment = [
 ];
 
 const NAV_ITEMS = [
-  { id: "experience", label: "Experience" },
-  { id: "work", label: "Work" },
-  { id: "skills", label: "Skills" },
-  { id: "contact", label: "Contact" },
+  { id: "experience", label: "Experience", icon: Briefcase },
+  { id: "work", label: "Work", icon: FolderGit2 },
+  { id: "skills", label: "Skills", icon: Wrench },
+  { id: "contact", label: "Contact", icon: Send },
 ];
 
 function NavMenu({ scrollTo }: { scrollTo: (id: string) => (e: React.MouseEvent) => void }) {
