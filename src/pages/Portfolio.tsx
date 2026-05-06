@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, ArrowUpRight, Briefcase, Sparkles, ExternalLink, FileText, FolderGit2, Wrench, Send, Calendar } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight, Briefcase, Sparkles, ExternalLink, FileText, FolderGit2, Wrench, Send, Calendar, Link2 } from "lucide-react";
 import ianPhoto from "@/assets/ian-baterna.png";
 
 const RESUME_URL = "https://drive.google.com/file/d/1J0vIVM3MYaZq1ldCUDORgfpVi51m1DPY/view?usp=sharing";
@@ -321,8 +321,9 @@ export default function Portfolio() {
                     </span>
                   ))}
                 </div>
-                <div className="mt-6 text-xs text-muted-foreground truncate">
-                  {p.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                <div className="mt-6 pt-4 border-t border-border flex items-center gap-2 text-xs text-muted-foreground group-hover:text-primary transition">
+                  <Link2 className="w-3.5 h-3.5 flex-shrink-0" />
+                  <span className="truncate">{p.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
                 </div>
               </motion.a>
             ))}
