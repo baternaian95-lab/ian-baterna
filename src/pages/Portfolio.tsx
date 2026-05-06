@@ -49,6 +49,11 @@ const skills = [
   "Lovable.dev",
   "SiteGround",
   "Microsoft Apps",
+  "GitHub",
+  "Netlify",
+  "Divi Theme",
+  "Siteground",
+  "Stripe",
 ];
 
 const employment = [
