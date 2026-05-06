@@ -52,7 +52,6 @@ const skills = [
   "GitHub",
   "Netlify",
   "Divi Theme",
-  "Siteground",
   "Stripe",
 ];
 
