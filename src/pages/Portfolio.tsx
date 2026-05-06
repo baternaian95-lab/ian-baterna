@@ -117,9 +117,14 @@ function NavMenu({ scrollTo }: { scrollTo: (id: string) => (e: React.MouseEvent)
           href={`#${item.id}`}
           onClick={scrollTo(item.id)}
           onMouseEnter={handleEnter}
-          className="relative py-2 hover:text-foreground transition-colors cursor-pointer"
+          className="relative flex items-center h-full hover:text-foreground transition-colors cursor-pointer"
         >
           {item.label}
+        </a>
+      ))}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 h-0.5 bg-primary transition-all duration-300 ease-out"
         </a>
       ))}
       <span
