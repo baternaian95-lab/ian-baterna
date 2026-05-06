@@ -109,7 +109,7 @@ function NavMenu({ scrollTo }: { scrollTo: (id: string) => (e: React.MouseEvent)
     <nav
       ref={navRef}
       onMouseLeave={handleLeave}
-      className="hidden md:flex relative items-center gap-8 text-sm text-muted-foreground"
+      className="hidden md:flex relative items-center gap-8 text-sm text-muted-foreground h-16"
     >
       {NAV_ITEMS.map((item) => (
         <a
