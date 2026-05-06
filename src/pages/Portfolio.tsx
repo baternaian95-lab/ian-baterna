@@ -258,9 +258,10 @@ export default function Portfolio() {
                 <div className="flex flex-col gap-5">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <h3 className="font-display text-2xl font-bold">
-                      {job.role} <span className="text-primary" style={{ fontSize: '20px' }}>· {job.company}</span>
+                      {job.role} <span className="text-primary" style={{ fontSize: '17px' }}>· {job.company}</span>
                     </h3>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide">
+                      <Calendar className="w-3.5 h-3.5" />
                       {job.period}
                     </span>
                   </div>
