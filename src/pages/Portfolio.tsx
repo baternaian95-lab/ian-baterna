@@ -81,7 +81,7 @@ const employment = [
 ];
 
 const NAV_ITEMS = [
-  { id: "experience", label: "Experience", icon: Briefcase },
+  { id: "experience", label: "Experience", icon: BriefcaseBusiness },
   { id: "work", label: "Work", icon: FolderGit2 },
   { id: "skills", label: "Skills", icon: Wrench },
   { id: "contact", label: "Contact", icon: Send },
