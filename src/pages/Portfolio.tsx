@@ -252,8 +252,8 @@ export default function Portfolio() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-card border border-border rounded-3xl p-8 md:p-10 hover:shadow-lg transition"
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-card border border-border rounded-3xl p-8 md:p-10 hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="flex flex-col gap-5">
                   <div className="flex flex-wrap items-center justify-between gap-3">
@@ -303,9 +303,9 @@ export default function Portfolio() {
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group bg-card border border-border rounded-3xl p-8 hover:shadow-xl hover:border-primary/40 transition flex flex-col"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="group bg-card border border-border rounded-3xl p-8 hover:shadow-xl hover:border-primary/40 transition-[box-shadow,border-color,color] duration-300 flex flex-col"
               >
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="font-display text-2xl font-bold group-hover:text-primary transition">
@@ -344,9 +344,9 @@ export default function Portfolio() {
                 key={skill}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.03 }}
-                className="px-5 py-2.5 rounded-full bg-card border border-border text-sm font-medium hover:border-primary hover:text-primary transition cursor-default"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: i * 0.03, ease: [0.22, 1, 0.36, 1] }}
+                className="px-5 py-2.5 rounded-full bg-card border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors duration-300 cursor-default"
               >
                 {skill}
               </motion.span>
