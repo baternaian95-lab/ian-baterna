@@ -252,8 +252,8 @@ export default function Portfolio() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-card border border-border rounded-3xl p-8 md:p-10 hover:shadow-lg transition"
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-card border border-border rounded-3xl p-8 md:p-10 hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="flex flex-col gap-5">
                   <div className="flex flex-wrap items-center justify-between gap-3">
