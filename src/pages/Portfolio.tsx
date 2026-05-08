@@ -119,16 +119,16 @@ function NavMenu({ scrollTo }: { scrollTo: (id: string) => (e: React.MouseEvent)
             href={`#${item.id}`}
             onClick={scrollTo(item.id)}
             onMouseEnter={handleEnter}
-            className="relative flex items-center gap-2 h-full hover:text-foreground transition-colors cursor-pointer"
+            className="group relative flex items-center gap-2 h-full hover:text-foreground transition-colors cursor-pointer"
           >
-            <Icon className="w-4 h-4" />
+            <Icon className="w-4 h-4 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-primary" />
             {item.label}
           </a>
         );
       })}
       <span
         aria-hidden
-        className="pointer-events-none absolute bottom-1 w-1.5 h-1.5 bg-primary rounded-full transition-all duration-300 ease-out -translate-x-1/2"
+        className="pointer-events-none absolute bottom-1 w-2 h-2 bg-primary rounded-full transition-all duration-300 ease-out -translate-x-1/2"
         style={{
           left: indicator.left,
           opacity: indicator.opacity,
