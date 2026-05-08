@@ -239,8 +239,8 @@ export default function Portfolio() {
               <h2 className="font-display text-3xl md:text-4xl font-bold mt-2">Where I've worked</h2>
             </div>
             <p className="text-muted-foreground max-w-md">
-              Five plus years building and maintaining sites and<br />
-              tools across web development, SEO, and integrations.
+              Five plus years building and maintaining sites and<br className="hidden md:inline" />
+              {" "}tools across web development, SEO, and integrations.
             </p>
           </div>
 
