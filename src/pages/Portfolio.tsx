@@ -303,9 +303,9 @@ export default function Portfolio() {
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group bg-card border border-border rounded-3xl p-8 hover:shadow-xl hover:border-primary/40 transition flex flex-col"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="group bg-card border border-border rounded-3xl p-8 hover:shadow-xl hover:border-primary/40 transition-[box-shadow,border-color,color] duration-300 flex flex-col"
               >
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="font-display text-2xl font-bold group-hover:text-primary transition">
