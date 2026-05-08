@@ -100,7 +100,7 @@ function NavMenu({ scrollTo }: { scrollTo: (id: string) => (e: React.MouseEvent)
     const navRect = navRef.current?.getBoundingClientRect();
     const rect = target.getBoundingClientRect();
     if (!navRect) return;
-    setIndicator({ left: rect.left - navRect.left, width: rect.width, opacity: 1 });
+    setIndicator({ left: rect.left - navRect.left + rect.width / 2, width: rect.width, opacity: 1 });
   };
 
   const handleLeave = () => setIndicator((p) => ({ ...p, opacity: 0 }));
@@ -128,10 +128,9 @@ function NavMenu({ scrollTo }: { scrollTo: (id: string) => (e: React.MouseEvent)
       })}
       <span
         aria-hidden
-        className="pointer-events-none absolute bottom-0 h-0.5 bg-primary rounded-full transition-all duration-300 ease-out"
+        className="pointer-events-none absolute bottom-1 w-1.5 h-1.5 bg-primary rounded-full transition-all duration-300 ease-out -translate-x-1/2"
         style={{
           left: indicator.left,
-          width: indicator.width,
           opacity: indicator.opacity,
         }}
       />
