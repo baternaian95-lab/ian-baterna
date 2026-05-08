@@ -364,14 +364,14 @@ export default function Portfolio() {
             Have a project in mind, or just want to say hello? My inbox is always open.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Button asChild size="lg" className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground">
+            <Button asChild size="lg" className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground group">
               <a href="mailto:baternaian95@gmail.com">
-                <Mail className="w-4 h-4 mr-2" /> baternaian95@gmail.com
+                <Mail className="w-4 h-4 mr-2 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:scale-110" /> baternaian95@gmail.com
               </a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full bg-transparent border-background/30 text-background hover:bg-background hover:text-foreground">
+            <Button asChild size="lg" variant="outline" className="rounded-full bg-transparent border-background/30 text-background hover:bg-background hover:text-foreground group">
               <a href="tel:+639684044242">
-                <Phone className="w-4 h-4 mr-2" /> +63 968 404 4242
+                <Phone className="w-4 h-4 mr-2 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:scale-110" /> +63 968 404 4242
               </a>
             </Button>
           </div>
