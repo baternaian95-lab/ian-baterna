@@ -154,9 +154,9 @@ export default function Portfolio() {
           </a>
           <NavMenu scrollTo={scrollTo} />
 
-          <Button asChild className="rounded-full">
+          <Button asChild className="rounded-full group">
             <a href="mailto:baternaian95@gmail.com">
-              Get in touch <ArrowUpRight className="w-4 h-4 ml-1" />
+              Get in touch <ArrowUpRight className="w-4 h-4 ml-1 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:scale-110" />
             </a>
           </Button>
         </div>
@@ -192,9 +192,9 @@ export default function Portfolio() {
                 <Button size="lg" className="rounded-full" onClick={scrollTo("work")}>
                   View my work
                 </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-full">
+                <Button asChild variant="outline" size="lg" className="rounded-full group">
                   <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
-                    <FileText className="w-4 h-4 mr-1" /> View Resume
+                    <FileText className="w-4 h-4 mr-1 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:scale-110" /> View Resume
                   </a>
                 </Button>
               </div>
