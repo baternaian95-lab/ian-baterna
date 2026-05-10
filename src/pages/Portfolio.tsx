@@ -254,9 +254,10 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="bg-card border border-border rounded-3xl p-8 md:p-10 hover:shadow-lg transition-shadow duration-300"
+                className="relative overflow-hidden bg-card border border-border rounded-3xl p-8 md:p-10 hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="flex flex-col gap-5">
+                <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/15 blur-3xl" />
+                <div className="relative flex flex-col gap-5">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <h3 className="font-display text-2xl font-bold">
                       {job.role} <span className="inline-flex items-center gap-1.5 text-primary align-middle" style={{ fontSize: '17px' }}>· <Building2 className="w-[17px] h-[17px]" />{job.company}</span>
@@ -306,9 +307,10 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="group bg-card border border-border rounded-3xl p-8 hover:shadow-xl hover:border-primary/40 transition-[box-shadow,border-color,color] duration-300 flex flex-col"
+                className="group relative overflow-hidden bg-card border border-border rounded-3xl p-8 hover:shadow-xl hover:border-primary/40 transition-[box-shadow,border-color,color] duration-300 flex flex-col"
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="pointer-events-none absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-primary/15 blur-3xl transition-opacity duration-500 group-hover:bg-primary/25" />
+                <div className="relative flex items-start justify-between gap-4">
                   <h3 className="font-display text-2xl font-bold group-hover:text-primary transition">
                     {p.title}
                   </h3>
