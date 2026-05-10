@@ -53,6 +53,8 @@ const skills = [
   "Netlify",
   "Divi Theme",
   "Stripe",
+  "aXcelerate",
+  "Canva",
 ];
 
 const employment = [
