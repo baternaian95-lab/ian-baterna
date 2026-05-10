@@ -254,13 +254,12 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="relative overflow-hidden bg-card border border-border rounded-3xl p-8 md:p-10 hover:shadow-lg transition-shadow duration-300"
+                className="bg-card border border-border rounded-3xl p-8 md:p-10 hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="pointer-events-none absolute -top-32 -right-32 w-64 h-64 rounded-full bg-primary/[0.06] blur-3xl" />
-                <div className="relative flex flex-col gap-5">
+                <div className="flex flex-col gap-5">
                   <div className="flex flex-wrap items-center justify-between gap-3">
-                    <h3 className="font-display text-2xl font-bold">
-                      {job.role} <span className="inline-flex items-center gap-1.5 text-primary align-middle" style={{ fontSize: '17px' }}>· <Building2 className="w-[17px] h-[17px]" />{job.company}</span>
+                    <h3 className="font-display font-bold" style={{ fontSize: '23px' }}>
+                      {job.role} <span className="inline-flex items-center gap-1.5 text-primary align-middle" style={{ fontSize: '16px' }}>· <Building2 className="w-4 h-4" />{job.company}</span>
                     </h3>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide">
                       <Calendar className="w-3.5 h-3.5" />
@@ -307,11 +306,10 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative overflow-hidden bg-card border border-border rounded-3xl p-8 hover:shadow-xl hover:border-primary/40 transition-[box-shadow,border-color,color] duration-300 flex flex-col"
+                className="group bg-card border border-border rounded-3xl p-8 hover:shadow-xl hover:border-primary/40 transition-[box-shadow,border-color,color] duration-300 flex flex-col"
               >
-                <div className="pointer-events-none absolute -bottom-28 -left-28 w-56 h-56 rounded-full bg-primary/[0.06] blur-3xl transition-colors duration-500 group-hover:bg-primary/10" />
-                <div className="relative flex items-start justify-between gap-4">
-                  <h3 className="font-display text-2xl font-bold group-hover:text-primary transition">
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="font-display font-bold group-hover:text-primary transition" style={{ fontSize: '23px' }}>
                     {p.title}
                   </h3>
                   <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition flex-shrink-0 mt-1" />
