@@ -309,8 +309,7 @@ export default function Portfolio() {
                 className="group bg-card border border-border rounded-3xl p-8 hover:shadow-xl hover:border-primary/40 transition-[box-shadow,border-color,color] duration-300 flex flex-col"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <h3 className="font-display text-2xl font-bold group-hover:text-primary transition flex items-center gap-2">
-                    <Globe className="w-5 h-5 flex-shrink-0" />
+                  <h3 className="font-display text-2xl font-bold group-hover:text-primary transition">
                     {p.title}
                   </h3>
                   <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition flex-shrink-0 mt-1" />
@@ -318,7 +317,7 @@ export default function Portfolio() {
                 <p className="mt-3 text-muted-foreground leading-relaxed">{p.description}</p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {p.tags.map((t) => (
-                    <span key={t} className="px-3 py-1 rounded-full bg-muted text-xs font-medium text-muted-foreground">
+                    <span key={t} className="px-3 py-1 rounded-full bg-card border border-border text-xs font-medium text-muted-foreground transition-colors duration-300 hover:border-primary hover:text-primary">
                       {t}
                     </span>
                   ))}
