@@ -256,7 +256,7 @@ export default function Portfolio() {
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="relative overflow-hidden bg-card border border-border rounded-3xl p-8 md:p-10 hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/15 blur-3xl" />
+                <div className="pointer-events-none absolute -top-32 -right-32 w-64 h-64 rounded-full bg-primary/[0.06] blur-3xl" />
                 <div className="relative flex flex-col gap-5">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <h3 className="font-display text-2xl font-bold">
@@ -309,7 +309,7 @@ export default function Portfolio() {
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="group relative overflow-hidden bg-card border border-border rounded-3xl p-8 hover:shadow-xl hover:border-primary/40 transition-[box-shadow,border-color,color] duration-300 flex flex-col"
               >
-                <div className="pointer-events-none absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-primary/15 blur-3xl transition-opacity duration-500 group-hover:bg-primary/25" />
+                <div className="pointer-events-none absolute -bottom-28 -left-28 w-56 h-56 rounded-full bg-primary/[0.06] blur-3xl transition-colors duration-500 group-hover:bg-primary/10" />
                 <div className="relative flex items-start justify-between gap-4">
                   <h3 className="font-display text-2xl font-bold group-hover:text-primary transition">
                     {p.title}
