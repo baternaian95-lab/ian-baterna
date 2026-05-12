@@ -14,8 +14,11 @@ function useTheme() {
   });
   useEffect(() => {
     const root = document.documentElement;
+    root.classList.add("theme-transition");
     root.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
+    const t = window.setTimeout(() => root.classList.remove("theme-transition"), 600);
+    return () => window.clearTimeout(t);
   }, [theme]);
   return { theme, toggle: () => setTheme((t) => (t === "dark" ? "light" : "dark")) };
 }
