@@ -107,10 +107,8 @@ html {
   }
 
   html.theme-transition,
-  html.theme-transition *,
-  html.theme-transition *::before,
-  html.theme-transition *::after {
-    transition: background-color 500ms ease, border-color 500ms ease, color 500ms ease, fill 500ms ease, stroke 500ms ease, box-shadow 500ms ease !important;
+  html.theme-transition body {
+    transition: background-color 300ms ease, color 300ms ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
