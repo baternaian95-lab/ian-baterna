@@ -1,8 +1,38 @@
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, ArrowUpRight, Briefcase, Sparkles, ExternalLink, FileText, FolderGit2, Wrench, Send, Calendar, Link2, BriefcaseBusiness, Building2, Globe } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight, Briefcase, Sparkles, ExternalLink, FileText, FolderGit2, Wrench, Send, Calendar, Link2, BriefcaseBusiness, Building2, Globe, Sun, Moon } from "lucide-react";
 import ianPhoto from "@/assets/ian-baterna.png";
+import ianPhotoDark from "@/assets/ian-baterna-dark.jpg";
+
+function useTheme() {
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") return "dark";
+    const stored = localStorage.getItem("theme");
+    if (stored === "light" || stored === "dark") return stored;
+    return "dark";
+  });
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+  return { theme, toggle: () => setTheme((t) => (t === "dark" ? "light" : "dark")) };
+}
+
+function ThemeToggle({ theme, onToggle }: { theme: "light" | "dark"; onToggle: () => void }) {
+  const isDark = theme === "dark";
+  return (
+    <button
+      onClick={onToggle}
+      aria-label="Toggle theme"
+      className="relative w-10 h-10 rounded-full border border-border bg-card hover:border-primary/50 hover:text-primary transition-colors duration-300 flex items-center justify-center overflow-hidden group"
+    >
+      <Sun className={`w-4 h-4 absolute transition-all duration-500 ease-out ${isDark ? "opacity-0 -rotate-90 scale-50" : "opacity-100 rotate-0 scale-100"}`} />
+      <Moon className={`w-4 h-4 absolute transition-all duration-500 ease-out ${isDark ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-90 scale-50"}`} />
+    </button>
+  );
+}
 
 const RESUME_URL = "https://drive.google.com/file/d/1J0vIVM3MYaZq1ldCUDORgfpVi51m1DPY/view?usp=sharing";
 
