@@ -187,11 +187,14 @@ export default function Portfolio() {
           </a>
           <NavMenu scrollTo={scrollTo} />
 
-          <Button asChild className="rounded-full group">
-            <a href="mailto:baternaian95@gmail.com">
-              Get in touch <ArrowUpRight className="w-4 h-4 ml-1 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:scale-110" />
-            </a>
-          </Button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle theme={theme} onToggle={toggle} />
+            <Button asChild className="rounded-full group">
+              <a href="mailto:baternaian95@gmail.com">
+                Get in touch <ArrowUpRight className="w-4 h-4 ml-1 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:scale-110" />
+              </a>
+            </Button>
+          </div>
         </div>
       </header>
 
