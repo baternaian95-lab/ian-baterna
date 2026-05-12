@@ -1,8 +1,38 @@
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, ArrowUpRight, Briefcase, Sparkles, ExternalLink, FileText, FolderGit2, Wrench, Send, Calendar, Link2, BriefcaseBusiness, Building2, Globe } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight, Briefcase, Sparkles, ExternalLink, FileText, FolderGit2, Wrench, Send, Calendar, Link2, BriefcaseBusiness, Building2, Globe, Sun, Moon } from "lucide-react";
 import ianPhoto from "@/assets/ian-baterna.png";
+import ianPhotoDark from "@/assets/ian-baterna-dark.jpg";
+
+function useTheme() {
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") return "dark";
+    const stored = localStorage.getItem("theme");
+    if (stored === "light" || stored === "dark") return stored;
+    return "dark";
+  });
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+  return { theme, toggle: () => setTheme((t) => (t === "dark" ? "light" : "dark")) };
+}
+
+function ThemeToggle({ theme, onToggle }: { theme: "light" | "dark"; onToggle: () => void }) {
+  const isDark = theme === "dark";
+  return (
+    <button
+      onClick={onToggle}
+      aria-label="Toggle theme"
+      className="relative w-10 h-10 rounded-full border border-border bg-card hover:border-primary/50 hover:text-primary transition-colors duration-300 flex items-center justify-center overflow-hidden group"
+    >
+      <Sun className={`w-4 h-4 absolute transition-all duration-500 ease-out ${isDark ? "opacity-0 -rotate-90 scale-50" : "opacity-100 rotate-0 scale-100"}`} />
+      <Moon className={`w-4 h-4 absolute transition-all duration-500 ease-out ${isDark ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-90 scale-50"}`} />
+    </button>
+  );
+}
 
 const RESUME_URL = "https://drive.google.com/file/d/1J0vIVM3MYaZq1ldCUDORgfpVi51m1DPY/view?usp=sharing";
 
@@ -141,6 +171,7 @@ function NavMenu({ scrollTo }: { scrollTo: (id: string) => (e: React.MouseEvent)
 }
 
 export default function Portfolio() {
+  const { theme, toggle } = useTheme();
   const scrollTo = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     const el = document.getElementById(id);
@@ -156,11 +187,14 @@ export default function Portfolio() {
           </a>
           <NavMenu scrollTo={scrollTo} />
 
-          <Button asChild className="rounded-full group">
-            <a href="mailto:baternaian95@gmail.com">
-              Get in touch <ArrowUpRight className="w-4 h-4 ml-1 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:scale-110" />
-            </a>
-          </Button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle theme={theme} onToggle={toggle} />
+            <Button asChild className="rounded-full group">
+              <a href="mailto:baternaian95@gmail.com">
+                Get in touch <ArrowUpRight className="w-4 h-4 ml-1 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:scale-110" />
+              </a>
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -216,7 +250,7 @@ export default function Portfolio() {
             >
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/30 to-transparent rounded-[2rem] blur-2xl" />
               <div className="relative w-64 h-80 md:w-80 md:h-[26rem] rounded-[2rem] overflow-hidden border-4 border-card shadow-2xl bg-gradient-to-br from-primary/20 via-muted to-card flex items-end justify-center">
-                <img src={ianPhoto} alt="Ian Baterna" className="w-full h-full object-cover object-top" />
+                <img src={theme === "dark" ? ianPhotoDark : ianPhoto} alt="Ian Baterna" className="w-full h-full object-cover object-top transition-opacity duration-500" />
               </div>
               <div className="absolute -bottom-4 -left-4 bg-card border border-border shadow-xl rounded-2xl px-4 py-3 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center">
