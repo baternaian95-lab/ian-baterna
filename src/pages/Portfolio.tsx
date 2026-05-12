@@ -391,8 +391,12 @@ export default function Portfolio() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-24 border-t border-border bg-foreground text-background">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+      <section id="contact" className="relative overflow-hidden py-24 border-t border-border bg-foreground text-background">
+        <div className="absolute inset-0 pointer-events-none hidden dark:block">
+          <div className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-primary/20 blur-3xl" />
+          <div className="absolute -bottom-40 -right-32 w-[520px] h-[520px] rounded-full bg-primary/15 blur-3xl" />
+        </div>
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight">
             Let's build something great.
           </h2>
