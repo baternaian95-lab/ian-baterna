@@ -171,6 +171,7 @@ function NavMenu({ scrollTo }: { scrollTo: (id: string) => (e: React.MouseEvent)
 }
 
 export default function Portfolio() {
+  const { theme, toggle } = useTheme();
   const scrollTo = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     const el = document.getElementById(id);
