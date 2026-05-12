@@ -252,9 +252,16 @@ export default function Portfolio() {
               className="relative justify-self-center md:justify-self-end"
             >
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/30 to-transparent rounded-[2rem] blur-2xl" />
-              <div className="relative w-64 h-80 md:w-80 md:h-[26rem] rounded-[2rem] overflow-hidden border-4 border-card shadow-2xl bg-gradient-to-br from-primary/20 via-muted to-card flex items-end justify-center">
-                <img src={ianPhoto} alt="Ian Baterna" className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 ease-out ${theme === "dark" ? "opacity-0" : "opacity-100"}`} />
-                <img src={ianPhotoDark} alt="" aria-hidden="true" className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 ease-out ${theme === "dark" ? "opacity-100" : "opacity-0"}`} />
+              <div className="relative w-64 h-80 md:w-80 md:h-[26rem] rounded-[2rem] overflow-hidden border-4 border-card shadow-2xl bg-gradient-to-br from-primary/20 via-muted to-card">
+                <motion.img
+                  key={theme}
+                  src={theme === "dark" ? ianPhotoDark : ianPhoto}
+                  alt="Ian Baterna"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                />
               </div>
               <div className="absolute -bottom-4 -left-4 bg-card border border-border shadow-xl rounded-2xl px-4 py-3 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center">
