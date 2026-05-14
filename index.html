@@ -42,8 +42,8 @@
     <script>
       (function () {
         try {
-          var t = localStorage.getItem('theme');
-          if (t !== 'light' && t !== 'dark') t = 'dark';
+          var t = localStorage.getItem('app-theme');
+          if (t !== 'light' && t !== 'dark') t = 'light';
           if (t === 'dark') document.documentElement.classList.add('dark');
         } catch (e) {}
       })();
