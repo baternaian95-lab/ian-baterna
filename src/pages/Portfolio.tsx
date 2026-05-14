@@ -1,26 +1,32 @@
 import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { useTheme as useNextTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, ArrowUpRight, Briefcase, Sparkles, ExternalLink, FileText, FolderGit2, Wrench, Send, Calendar, Link2, BriefcaseBusiness, Building2, Globe, Sun, Moon } from "lucide-react";
 import ianPhoto from "@/assets/ian-baterna.png";
 import ianPhotoDark from "@/assets/ian-baterna-dark.jpg";
 
 function useTheme() {
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window === "undefined") return "dark";
-    const stored = localStorage.getItem("theme");
-    if (stored === "light" || stored === "dark") return stored;
-    return "dark";
-  });
+  const { resolvedTheme, setTheme } = useNextTheme();
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const theme: "light" | "dark" = mounted && resolvedTheme === "dark" ? "dark" : "light";
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const root = document.documentElement;
     root.classList.add("theme-transition");
-    root.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("theme", theme);
-    const t = window.setTimeout(() => root.classList.remove("theme-transition"), 350);
-    return () => window.clearTimeout(t);
-  }, [theme]);
-  return { theme, toggle: () => setTheme((t) => (t === "dark" ? "light" : "dark")) };
+    const timer = window.setTimeout(() => root.classList.remove("theme-transition"), 350);
+
+    return () => window.clearTimeout(timer);
+  }, [mounted, theme]);
+
+  return { theme, toggle: () => setTheme(theme === "dark" ? "light" : "dark") };
 }
 
 function ThemeToggle({ theme, onToggle }: { theme: "light" | "dark"; onToggle: () => void }) {
